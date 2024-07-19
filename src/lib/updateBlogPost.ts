@@ -1,7 +1,12 @@
-import { BlogPost } from "@/lib/tsUtils";
+import { BlogItem, BlogPost } from "@/lib/tsUtils";
 import { endpoint } from "@/lib/constants";
 
-export default async function UpdateBlogPost(data: BlogPost) {
+/**
+ * This method will update the selected blog.
+ *
+ * @param data object - containing id, title and body
+ */
+export default async function UpdateBlogPost(data: BlogPost): Promise<BlogItem> {
   const response = await fetch(`${endpoint}/updateBlogPost`, {
     method: "PATCH",
     headers: {

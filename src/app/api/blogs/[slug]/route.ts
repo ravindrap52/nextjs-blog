@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import blogs from "@/data/blogs.json";
 
+/**
+ * This method will find and return the blog based on the blog id.
+ *
+ * @param slug string - blogId.
+ */
 export async function GET(
   request: Request,
   { params }: { params: { slug: string } }

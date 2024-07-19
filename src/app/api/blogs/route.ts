@@ -4,6 +4,9 @@ import blogs from "@/data/blogs.json";
 
 export const dynamic = "force-dynamic";
 
+/**
+ * This will return the list of the available blogs.
+ */
 export async function GET() {
   try {
     const blogPosts: BlogItems = blogs.posts;

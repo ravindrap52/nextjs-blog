@@ -1,7 +1,12 @@
-import { BlogPost } from "@/lib/tsUtils";
+import { BlogItem, BlogPost } from "@/lib/tsUtils";
 import { endpoint } from "@/lib/constants";
 
-export default async function CreateBlogPost(data: BlogPost) {
+/**
+ * This method will create a new blog.
+ *
+ * @param data object - containing id, title and body
+ */
+export default async function CreateBlogPost(data: BlogPost): Promise<BlogItem> {
   const response = await fetch(`${endpoint}/createBlogPost`, {
     method: "POST",
     headers: {

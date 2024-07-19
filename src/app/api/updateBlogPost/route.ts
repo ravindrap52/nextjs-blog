@@ -1,8 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { BlogItems, BlogItem } from "@/lib/tsUtils";
 import blogs from "@/data/blogs.json";
-import { updateBlogPosts } from "@/lib/updateJsonFIle";
+import { updateJsonFile } from "@/lib/updateJsonFile";
 
+/**
+ * This method will update the selected blog.
+ *
+ * @param id number - blog id
+ * @param tile string - blog title.
+ * @param body string - content of the blog.
+ */
 export async function PATCH(request: NextRequest) {
   try {
     const blogPosts: BlogItems = blogs.posts;
@@ -29,8 +36,8 @@ export async function PATCH(request: NextRequest) {
     if (title) blogPosts[postIndex].title = title;
     if (body) blogPosts[postIndex].body = body;
 
-    // Assuming you would save the updated blogs back to your storage here
-    updateBlogPosts(blogPosts[postIndex]);
+    // updating the json file with the new blog
+    updateJsonFile(blogPosts[postIndex]);
     return NextResponse.json(blogPosts[postIndex]);
   } catch (error) {
     console.error(error);

@@ -1,14 +1,12 @@
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          To View the blogs list click on the link Blogs.
-        </p>
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          To Edit the blog click on the link Admin.
-        </p>
-      </div>
-    </main>
+    <div className="w-3/4">
+      <h1 className="text-3xl font-bold mb-4">Welcome</h1>
+      <p className="mb-4">A web application to create and edit a blog post</p>
+      <ul className="list-disc list-inside">
+        <li className="mb-2">Click on Link Blogs to see the list of Blogs.</li>
+        <li className="mb-2">To Create or Edit a blog click on Admin.</li>
+      </ul>
+    </div>
   );
 }

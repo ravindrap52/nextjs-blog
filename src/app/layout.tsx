@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Blog Posts",
-  description: "Briefly about blogs",
+  description: "Create or Edit Blogs",
 };
 
 export default function RootLayout({
@@ -28,7 +28,7 @@ export default function RootLayout({
           </aside>
 
           <main className="flex-1 p-6">
-            <div className="mt-6">{children}</div>
+            <div>{children}</div>
           </main>
         </Providers>
       </body>

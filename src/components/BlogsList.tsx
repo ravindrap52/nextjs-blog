@@ -20,11 +20,10 @@ export default function BlogsList() {
   }
   return (
     <>
-      <h1>Posts</h1>
-      <ul>
+      <ul className="list-disc list-inside mb-6">
         {blogs?.map((blog) => {
           return (
-            <li key={blog.id}>
+            <li key={blog.id} className="mb-2">
               <Link href={`/admin/${blog.id}`}> {blog.title} </Link>
             </li>
           );

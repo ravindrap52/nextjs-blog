@@ -1,6 +1,9 @@
 import { endpoint } from "@/lib/constants";
 import { BlogItems, BlogItem } from "@/lib/tsUtils";
 
+/**
+ * This will return the list of the available blogs.
+ */
 export async function getBlogs(): Promise<BlogItems> {
   const response = await fetch(`${endpoint}/blogs`, {
     cache: 'no-store',

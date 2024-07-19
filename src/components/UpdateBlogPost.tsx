@@ -9,12 +9,13 @@ import UpdateBlogPost from "@/lib/updateBlogPost";
 
 export default function UpdateBlog({ id }: { id: number }) {
   const queryClient = useQueryClient();
+  // fetching the data based on the id for prepopulating
   const { data, error, isLoading } = useQuery({
     queryKey: ["blog", id],
     queryFn: () => fetchBlog(Number(id)),
     refetchOnWindowFocus: true,
   });
-
+  // invalidating the query so that the data will be up to date
   const mutation = useMutation({
     mutationFn: UpdateBlogPost,
     onMutate: (values) => {
@@ -39,7 +40,7 @@ export default function UpdateBlog({ id }: { id: number }) {
       queryClient.invalidateQueries({ queryKey: ["blog"] });
     },
   });
-
+   // destructuring the necessary things from useform and set the default values
   const {
     register,
     handleSubmit,
@@ -52,6 +53,7 @@ export default function UpdateBlog({ id }: { id: number }) {
       id: 0,
     },
   });
+  // setting the values 
   useEffect(() => {
     if (data) {
       setValue("title", data.title);
@@ -59,7 +61,7 @@ export default function UpdateBlog({ id }: { id: number }) {
       setValue("id", data.id);
     }
   }, [data, setValue]);
-
+  // submitting and resettign the form
   const submitForm: SubmitHandler<BlogPost> = (data) => {
     mutation.mutate(data);
   };
@@ -75,29 +77,29 @@ export default function UpdateBlog({ id }: { id: number }) {
       </article>
       <div>
         <form onSubmit={handleSubmit(submitForm)}>
-          <div>
-            <label htmlFor="title" className="block font-semibold">
+          <div className="mb-4">
+            <label htmlFor="title" className="block text-gray-700">
               Title:
             </label>
             <input
               type="text"
               {...register("title", { required: "Title is required" })}
               id="title"
-              className="border p-2 w-full"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.title && (
               <p className="text-red-500">{errors.title.message}</p>
             )}
           </div>
           <div className="mt-4">
-            <label htmlFor="body" className="block font-semibold">
+            <label htmlFor="body" className="block text-gray-700">
               Body:
             </label>
             <textarea
               rows={5}
               {...register("body", { required: "Body is required" })}
               id="body"
-              className="border p-2 w-full"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.body && (
               <p className="text-red-500">{errors.body.message}</p>
@@ -106,7 +108,7 @@ export default function UpdateBlog({ id }: { id: number }) {
           <div className="mt-4">
             <button
               type="submit"
-              className="bg-blue-500 text-white p-2 rounded"
+              className="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               Update Post
             </button>

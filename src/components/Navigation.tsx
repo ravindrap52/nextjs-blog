@@ -19,7 +19,7 @@ export default function Navigation({ navList }: NavigationMenu) {
           <Link
             key={navItem.path}
             href={navItem.path}
-            className={`block py-2.5 px-4 hover:bg-blue-700 ${
+            className={`block mb-2 py-2.5 px-4 hover:bg-blue-700 ${
               pathname === navItem.path ? "bg-blue-700" : ""
             }`}
           >
