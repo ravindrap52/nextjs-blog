@@ -1,15 +1,7 @@
 import { NextResponse } from "next/server";
 import { BlogItems } from "@/lib/tsUtils";
-import fs from "fs";
-import path from "path";
+import { getBlogPosts } from "@/lib/getBlogPosts";
 
-// Helper function to read the JSON file from the filesystem
-async function getBlogPosts(): Promise<BlogItems> {
-  const filePath = path.resolve(process.cwd(), "src", "data", "blogs.json");
-  const fileContent = fs.readFileSync(filePath, "utf-8");
-  const { posts } = JSON.parse(fileContent);
-  return posts;
-}
 
 export const dynamic = "force-dynamic";
 

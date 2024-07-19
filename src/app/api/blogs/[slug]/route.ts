@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import blogs from "@/data/blogs.json";
-
+import { getBlogPosts } from "@/lib/getBlogPosts";
+import { BlogItems } from "@/lib/tsUtils";
 /**
  * This method will find and return the blog based on the blog id.
  *
@@ -12,7 +12,8 @@ export async function GET(
 ) {
   const blogId = Number(params.slug);
   try {
-    const blog = blogs.posts.find((blog) => blog.id === blogId);
+    const blogPosts: BlogItems = await getBlogPosts();
+    const blog = blogPosts.find((blog) => blog.id === blogId);
 
     if (!blog) {
       return new NextResponse("not found", { status: 404 });

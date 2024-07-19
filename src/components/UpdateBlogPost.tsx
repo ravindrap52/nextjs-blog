@@ -113,6 +113,9 @@ export default function UpdateBlog({ id }: { id: number }) {
               Update Post
             </button>
           </div>
+          <div>
+            {mutation.isSuccess ? <h1 className="text-sm font-bold mb-4">Blog updated successfully!</h1>: ""}
+          </div>
         </form>
       </div>
     </div>

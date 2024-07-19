@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { BlogItems, BlogItem } from "@/lib/tsUtils";
-import blogs from "@/data/blogs.json";
+import { getBlogPosts } from "@/lib/getBlogPosts";
 import { updateJsonFile } from "@/lib/updateJsonFile";
 
 /**
@@ -12,7 +12,7 @@ import { updateJsonFile } from "@/lib/updateJsonFile";
  */
 export async function PATCH(request: NextRequest) {
   try {
-    const blogPosts: BlogItems = blogs.posts;
+    const blogPosts: BlogItems = await getBlogPosts();
     const { id, title, body } = await request.json();
 
     // Validate input
